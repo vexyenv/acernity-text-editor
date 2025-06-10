@@ -48,11 +48,11 @@ def main():
     window.configure(bg="#1a1a1a")
     window.grid_rowconfigure(0, minsize=400)
     window.grid_columnconfigure(1, minsize=500)
-    default_font_family = "Consolas"
-    current_font = font.Font(family=default_font_family, size=16)
+    defaultFontFamily = "Consolas"
+    currentFont = font.Font(family=defaultFontFamily, size=16)
     textEdit = tk.Text(
         window,
-        font=current_font,
+        font=currentFont,
         bg="#2b2b2b",
         fg="#ffffff",
         insertbackground="#00BFFF",
@@ -60,7 +60,7 @@ def main():
     textEdit.grid(row=0, column=1)
     currentTheme = {"mode": "dark"}
 
-    def apply_theme(mode):
+    def applyTheme(mode):
         theme = themes[mode]
         window.configure(bg=theme["bg"])
         textEdit.configure(
@@ -68,12 +68,11 @@ def main():
         )
         currentTheme["mode"] = mode
 
-    # Toggle function
-    def toggle_theme():
+    def toggleTheme():
         new_mode = "light" if currentTheme["mode"] == "dark" else "dark"
-        apply_theme(new_mode)
+        applyTheme(new_mode)
 
-    apply_theme("dark")
+    applyTheme("dark")
 
     scrollbar = tk.Scrollbar(window, command=textEdit.yview)
     textEdit.configure(yscrollcommand=scrollbar.set)
@@ -89,7 +88,7 @@ def main():
     menubar.add_cascade(label="File", menu=fileMenu)
 
     viewMenu = tk.Menu(menubar, tearoff=0)
-    viewMenu.add_command(label="Toggle Theme", command=toggle_theme)
+    viewMenu.add_command(label="Toggle Theme", command=toggleTheme)
     menubar.add_cascade(label="View", menu=viewMenu)
 
     fontMenu = tk.Menu(menubar, tearoff=0)
@@ -102,18 +101,18 @@ def main():
         "Lucida Console",
     ]
 
-    def change_font(family):
-        current_font.configure(family=family)
+    def changeFont(family):
+        currentFont.configure(family=family)
 
     for fam in font_families:
-        fontMenu.add_command(label=fam, command=lambda f=fam: change_font(f))
+        fontMenu.add_command(label=fam, command=lambda f=fam: changeFont(f))
     menubar.add_cascade(label="Font", menu=fontMenu)
 
     helpMenu = tk.Menu(menubar, tearoff=0)
     helpMenu.add_command(
         label="About",
         command=lambda: messagebox.showinfo(
-            "About", "Acernity Text Editor\nVersion 1.0"
+            "About", "Acernity Text Editor\nVersion 1.1.1"
         ),
     )
 
@@ -124,7 +123,7 @@ def main():
     window.bind("<Control-s>", lambda event: saveFile(window, textEdit))
     window.bind("<Control-o>", lambda event: openFile(window, textEdit))
     window.bind("<Control-n>", lambda event: textEdit.delete(1.0, tk.END))
-    window.bind("<Control-t>", lambda event: toggle_theme())
+    window.bind("<Control-t>", lambda event: toggleTheme())
 
     window.mainloop()
 
