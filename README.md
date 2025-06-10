@@ -1,4 +1,4 @@
-8﻿# 🚀 Acernity Editor
+# 🚀 Acernity Editor
 
 **Version:** `1.0.0`  
 _A lightweight, distraction-free text editor built with Python._
