@@ -7,6 +7,12 @@ Acernity Editor is designed to help you focus on your writing by providing a cle
 
 ---
 
+# 🖼️ Preview
+
+[![App Preview](https://github.com/vexyenv/readme-assets/blob/main/acernity.png?raw=true)](https://github.com/vexyenv/readme-assets/blob/main/acernity.png?raw=true)
+
+---
+
 ## ✨ Features
 
 <div align="center">
